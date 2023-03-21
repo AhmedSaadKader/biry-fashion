@@ -183,23 +183,26 @@ const Navbar = () => {
               <SvgIcon component={Logo} />
             </Box>
           </NoDisplayIfSearchOpen>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', sm: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 500,
-              letterSpacing: '.1rem',
-              color: 'inherit',
-              textDecoration: 'none'
-            }}>
-            Biry Fashion
-          </Typography>
+          <NoDisplayIfSearchOpen openSearch={openSearch}>
+            <Typography
+              variant="body1"
+              component="a"
+              href="/"
+              sx={{
+                fontSize: { xs: '0.9rem', sm: '1.25rem' },
+                mr: 2,
+                display: { sm: 'flex', md: 'none' },
+                flexGrow: 1,
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.1rem',
+                color: 'inherit',
+                textDecoration: 'none'
+              }}>
+              Biry Fashion
+            </Typography>
+          </NoDisplayIfSearchOpen>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => {
               return (
