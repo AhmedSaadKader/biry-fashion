@@ -19,6 +19,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { Logo } from '../../assets/logo';
 import SvgIcon from '@mui/material/SvgIcon';
+import NavbarLogo from './NavbarLogo';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -120,11 +121,12 @@ const Navbar = () => {
             alignContent: 'center',
             justifyContent: 'space-between'
           }}>
-          <Box sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
+          {/* <Box sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
             <Box sx={{ width: '2em' }} component="a" href="/">
               <SvgIcon component={Logo} />
             </Box>
-          </Box>
+          </Box> */}
+          <NavbarLogo xs={'none'} md={'flex'} />
           <Typography
             variant="h6"
             noWrap
@@ -135,6 +137,7 @@ const Navbar = () => {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
+              flexGrow: 1,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none'
@@ -176,16 +179,10 @@ const Navbar = () => {
               flexGrow: 1,
               justifyContent: 'center'
             }}>
-            <Box
-              sx={{ maxWidth: '4em', display: 'flex', alignItems: 'center' }}
-              component="a"
-              href="/">
-              <SvgIcon component={Logo} />
-            </Box>
+            <NavbarLogo mr={0} xs={'flex'} md={'none'} />
           </NoDisplayIfSearchOpen>
-          <NoDisplayIfSearchOpen openSearch={openSearch}>
+          <NoDisplayIfSearchOpen openSearch={openSearch} sx={{ flexGrow: 1 }}>
             <Typography
-              variant="body1"
               component="a"
               href="/"
               sx={{
@@ -202,7 +199,6 @@ const Navbar = () => {
               Biry Fashion
             </Typography>
           </NoDisplayIfSearchOpen>
-
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => {
               return (
