@@ -123,7 +123,7 @@ const Navbar = () => {
               component="a"
               href="/"
               sx={{
-                fontSize: { xs: '0.9rem', sm: '1.25rem' },
+                fontSize: { xs: '1.1rem', sm: '1.25rem' },
                 mr: 2,
                 display: { sm: 'flex', md: 'none' },
                 flexGrow: 1,
