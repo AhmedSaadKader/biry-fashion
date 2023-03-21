@@ -1,18 +1,21 @@
 import Box from '@mui/material/Box';
 import SvgIcon from '@mui/material/SvgIcon';
 import { Logo } from '../../assets/logo';
+import LogoWithoutName from '../../assets/logoWithoutName.jpg';
 
 interface NavBarLogoProps {
   mr?: number;
   xs: string;
   md: string;
+  width?: string;
 }
 
-const NavbarLogo = ({ mr = 2, xs, md }: NavBarLogoProps) => {
+const NavbarLogo = ({ width = '4em', mr = 2, xs, md }: NavBarLogoProps) => {
   return (
     <Box sx={{ mr: mr, display: { xs: xs, md: md }, alignItems: 'center' }}>
-      <Box sx={{ width: '4em' }} component="a" href="/">
-        <SvgIcon component={Logo} />
+      <Box sx={{ width: width }} component="a" href="/">
+        {/* <SvgIcon component={Logo} /> */}
+        <img src={LogoWithoutName} style={{ width: '70px' }} />
       </Box>
     </Box>
   );

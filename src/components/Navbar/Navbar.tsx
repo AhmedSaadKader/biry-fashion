@@ -1,5 +1,4 @@
 import {
-  alpha,
   AppBar,
   Box,
   Button,
@@ -15,8 +14,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Container } from '@mui/system';
 import Avatar from '@mui/material/Avatar';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
 import NavbarLogo from './NavbarLogo';
 import NavbarSearch from './NavbarSearch';
 
@@ -65,7 +62,7 @@ const Navbar = () => {
             alignContent: 'center',
             justifyContent: 'space-between'
           }}>
-          <NavbarLogo xs={'none'} md={'flex'} />
+          <NavbarLogo width="8em" xs={'none'} md={'flex'} />
           <Typography
             variant="h6"
             noWrap
@@ -152,9 +149,6 @@ const Navbar = () => {
             })}
           </Box>
           <NavbarSearch setOpenSearch={setOpenSearch} />
-          <NoDisplayIfSearchOpen
-            openSearch={openSearch}
-            sx={{ flexGrow: 0 }}></NoDisplayIfSearchOpen>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar alt="Remy Sharp" />
