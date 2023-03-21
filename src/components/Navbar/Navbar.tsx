@@ -17,9 +17,8 @@ import { Container } from '@mui/system';
 import Avatar from '@mui/material/Avatar';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import { Logo } from '../../assets/logo';
-import SvgIcon from '@mui/material/SvgIcon';
 import NavbarLogo from './NavbarLogo';
+import NavbarSearch from './NavbarSearch';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -27,10 +26,6 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 interface SearchDisplayProps {
   openSearch: boolean;
 }
-
-const MenuIconButton = styled(IconButton)(() => ({
-  padding: 0
-}));
 
 const NoDisplayIfSearchOpen = styled('div', {
   shouldForwardProp: (prop) => prop !== 'openSearch'
@@ -40,57 +35,6 @@ const NoDisplayIfSearchOpen = styled('div', {
   },
   [theme.breakpoints.up('md')]: {
     display: 'none'
-  }
-}));
-
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  marginRight: 5,
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25)
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto'
-  },
-  [theme.breakpoints.down('sm')]: {
-    width: 'fit-content'
-  }
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch'
-      }
-    },
-    [theme.breakpoints.down('sm')]: {
-      width: '0ch',
-      '&:focus': {
-        width: '100%'
-      }
-    }
   }
 }));
 
@@ -121,11 +65,6 @@ const Navbar = () => {
             alignContent: 'center',
             justifyContent: 'space-between'
           }}>
-          {/* <Box sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
-            <Box sx={{ width: '2em' }} component="a" href="/">
-              <SvgIcon component={Logo} />
-            </Box>
-          </Box> */}
           <NavbarLogo xs={'none'} md={'flex'} />
           <Typography
             variant="h6"
@@ -145,7 +84,8 @@ const Navbar = () => {
             Biry Fashion
           </Typography>
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
-            <MenuIconButton
+            <IconButton
+              sx={{ padding: 0 }}
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -153,7 +93,7 @@ const Navbar = () => {
               onClick={handleOpenNavMenu}
               color="inherit">
               <MenuIcon />
-            </MenuIconButton>
+            </IconButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -211,41 +151,32 @@ const Navbar = () => {
               );
             })}
           </Box>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search..."
-              inputProps={{ 'aria-label': 'search' }}
-              onFocus={() => setOpenSearch(true)}
-              onBlur={() => setOpenSearch(false)}
-            />
-          </Search>
-          <NoDisplayIfSearchOpen openSearch={openSearch} sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-              anchorEl={anchorElUser}
-              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-              keepMounted
-              transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
-              {settings.map((setting) => {
-                return (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                );
-              })}
-            </Menu>
-          </NoDisplayIfSearchOpen>
+          <NavbarSearch setOpenSearch={setOpenSearch} />
+          <NoDisplayIfSearchOpen
+            openSearch={openSearch}
+            sx={{ flexGrow: 0 }}></NoDisplayIfSearchOpen>
+          <Tooltip title="Open settings">
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar alt="Remy Sharp" />
+            </IconButton>
+          </Tooltip>
+          <Menu
+            sx={{ mt: '45px' }}
+            id="menu-appbar"
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+            anchorEl={anchorElUser}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
+            {settings.map((setting) => {
+              return (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              );
+            })}
+          </Menu>
         </Toolbar>
       </Container>
     </AppBar>

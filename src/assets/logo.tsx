@@ -11,7 +11,8 @@ export const Logo = () => {
       width="100%"
       viewBox="0 0 770 489"
       enableBackground="new 0 0 770 489"
-      xmlSpace="preserve">
+      xmlSpace="preserve"
+    >
       <path
         fill="#201B21"
         opacity="1.000000"
