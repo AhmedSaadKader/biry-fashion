@@ -33,8 +33,13 @@ const MenuIconButton = styled(IconButton)(() => ({
 
 const NoDisplayIfSearchOpen = styled('div', {
   shouldForwardProp: (prop) => prop !== 'openSearch'
-})<SearchDisplayProps>(({ openSearch }) => ({
-  display: openSearch ? 'none' : 'flex'
+})<SearchDisplayProps>(({ openSearch, theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    display: openSearch ? 'none' : 'flex'
+  },
+  [theme.breakpoints.up('md')]: {
+    display: 'none'
+  }
 }));
 
 const Search = styled('div')(({ theme }) => ({
@@ -164,20 +169,18 @@ const Navbar = () => {
               })}
             </Menu>
           </Box>
-          <NoDisplayIfSearchOpen openSearch={openSearch}>
+          <NoDisplayIfSearchOpen
+            openSearch={openSearch}
+            sx={{
+              m: '0 5px',
+              flexGrow: 1,
+              justifyContent: 'center'
+            }}>
             <Box
-              sx={{
-                m: '0 5px',
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                justifyContent: 'center'
-              }}>
-              <Box
-                sx={{ maxWidth: '4em', display: 'flex', alignItems: 'center' }}
-                component="a"
-                href="/">
-                <SvgIcon component={Logo} />
-              </Box>
+              sx={{ maxWidth: '4em', display: 'flex', alignItems: 'center' }}
+              component="a"
+              href="/">
+              <SvgIcon component={Logo} />
             </Box>
           </NoDisplayIfSearchOpen>
           <Typography
@@ -220,31 +223,29 @@ const Navbar = () => {
               onBlur={() => setOpenSearch(false)}
             />
           </Search>
-          <NoDisplayIfSearchOpen openSearch={openSearch}>
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-                anchorEl={anchorElUser}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-                keepMounted
-                transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
-                {settings.map((setting) => {
-                  return (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                  );
-                })}
-              </Menu>
-            </Box>
+          <NoDisplayIfSearchOpen openSearch={openSearch} sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+              anchorEl={anchorElUser}
+              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+              keepMounted
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
+              {settings.map((setting) => {
+                return (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                );
+              })}
+            </Menu>
           </NoDisplayIfSearchOpen>
         </Toolbar>
       </Container>
