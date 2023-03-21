@@ -14,13 +14,18 @@ import { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Container } from '@mui/system';
-import AdbIcon from '@mui/icons-material/Adb';
 import Avatar from '@mui/material/Avatar';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import { Logo } from '../../assets/logo';
+import SvgIcon from '@mui/material/SvgIcon';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const MenuIconButton = styled(IconButton)(({ theme }) => ({
+  padding: 0
+}));
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -91,10 +96,20 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: '#201b21' }}>
       <Container maxWidth="xl">
-        <Toolbar sx={{ paddingLeft: 0, paddingRight: 0 }}>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+        <Toolbar
+          sx={{
+            paddingLeft: 0,
+            paddingRight: 0,
+            alignContent: 'center',
+            justifyContent: 'space-between'
+          }}>
+          <Box sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ width: '2em' }}>
+              <SvgIcon component={Logo} />
+            </Box>
+          </Box>
           <Typography
             variant="h6"
             noWrap
@@ -111,8 +126,8 @@ const Navbar = () => {
             }}>
             Biry Fashion
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
+          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+            <MenuIconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -120,7 +135,7 @@ const Navbar = () => {
               onClick={handleOpenNavMenu}
               color="inherit">
               <MenuIcon />
-            </IconButton>
+            </MenuIconButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -139,7 +154,17 @@ const Navbar = () => {
               })}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Box
+            sx={{
+              m: '0 5px',
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              justifyContent: 'center'
+            }}>
+            <Box sx={{ maxWidth: '4em', display: 'flex', alignItems: 'center' }}>
+              <SvgIcon component={Logo} />
+            </Box>
+          </Box>
           <Typography
             variant="h6"
             noWrap
@@ -147,7 +172,7 @@ const Navbar = () => {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: 'none', sm: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 500,
