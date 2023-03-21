@@ -23,8 +23,18 @@ import SvgIcon from '@mui/material/SvgIcon';
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const MenuIconButton = styled(IconButton)(({ theme }) => ({
+interface SearchDisplayProps {
+  openSearch: boolean;
+}
+
+const MenuIconButton = styled(IconButton)(() => ({
   padding: 0
+}));
+
+const NoDisplayIfSearchOpen = styled('div', {
+  shouldForwardProp: (prop) => prop !== 'openSearch'
+})<SearchDisplayProps>(({ openSearch }) => ({
+  display: openSearch ? 'none' : 'flex'
 }));
 
 const Search = styled('div')(({ theme }) => ({
@@ -96,7 +106,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#201b21' }}>
+    <AppBar position="sticky" sx={{ backgroundColor: '#201b21' }}>
       <Container maxWidth="xl">
         <Toolbar
           sx={{
@@ -106,7 +116,7 @@ const Navbar = () => {
             justifyContent: 'space-between'
           }}>
           <Box sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
-            <Box sx={{ width: '2em' }}>
+            <Box sx={{ width: '2em' }} component="a" href="/">
               <SvgIcon component={Logo} />
             </Box>
           </Box>
@@ -154,17 +164,22 @@ const Navbar = () => {
               })}
             </Menu>
           </Box>
-          <Box
-            sx={{
-              m: '0 5px',
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              justifyContent: 'center'
-            }}>
-            <Box sx={{ maxWidth: '4em', display: 'flex', alignItems: 'center' }}>
-              <SvgIcon component={Logo} />
+          <NoDisplayIfSearchOpen openSearch={openSearch}>
+            <Box
+              sx={{
+                m: '0 5px',
+                display: { xs: 'flex', md: 'none' },
+                flexGrow: 1,
+                justifyContent: 'center'
+              }}>
+              <Box
+                sx={{ maxWidth: '4em', display: 'flex', alignItems: 'center' }}
+                component="a"
+                href="/">
+                <SvgIcon component={Logo} />
+              </Box>
             </Box>
-          </Box>
+          </NoDisplayIfSearchOpen>
           <Typography
             variant="h6"
             noWrap
@@ -180,7 +195,7 @@ const Navbar = () => {
               color: 'inherit',
               textDecoration: 'none'
             }}>
-            Biry
+            Biry Fashion
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => {
@@ -205,30 +220,32 @@ const Navbar = () => {
               onBlur={() => setOpenSearch(false)}
             />
           </Search>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-              anchorEl={anchorElUser}
-              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-              keepMounted
-              transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
-              {settings.map((setting) => {
-                return (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                );
-              })}
-            </Menu>
-          </Box>
+          <NoDisplayIfSearchOpen openSearch={openSearch}>
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+                anchorEl={anchorElUser}
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                keepMounted
+                transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
+                {settings.map((setting) => {
+                  return (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  );
+                })}
+              </Menu>
+            </Box>
+          </NoDisplayIfSearchOpen>
         </Toolbar>
       </Container>
     </AppBar>
