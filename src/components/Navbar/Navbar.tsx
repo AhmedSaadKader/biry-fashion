@@ -1,13 +1,4 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  IconButton,
-  styled,
-  Toolbar,
-  Tooltip,
-  Typography
-} from '@mui/material';
+import { AppBar, Box, IconButton, styled, Toolbar, Tooltip, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import Menu from '@mui/material/Menu';
@@ -18,7 +9,6 @@ import NavbarLogo from './NavbarLogo';
 import NavbarSearch from './NavbarSearch';
 import ResponsiveDrawer from '../Drawer/Drawer';
 
-const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 interface SearchDisplayProps {
