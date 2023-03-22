@@ -1,5 +1,5 @@
 import { KeyboardArrowDown } from '@mui/icons-material';
-import { Box, ListItemButton, ListItemText, ListItemIcon } from '@mui/material';
+import { Box, ListItemButton, ListItemText, ListItemIcon, styled } from '@mui/material';
 import { useState } from 'react';
 
 interface DataArray {
@@ -30,8 +30,7 @@ const DrawerNestedList = ({ index, text, data }: DrawerNestedList) => {
         sx={{
           px: 3,
           pt: 2.5,
-          pb: open ? 0 : 2.5,
-          '&:hover, &:focus': { '& svg': { opacity: open ? 1 : 0 } }
+          pb: open ? 0 : 2.5
         }}>
         <ListItemText
           primary={text}
@@ -53,10 +52,11 @@ const DrawerNestedList = ({ index, text, data }: DrawerNestedList) => {
         />
         <KeyboardArrowDown
           sx={{
-            mr: -1,
-            opacity: 0,
+            // mr: -1,
+            // opacity: 1,
             transform: open ? 'rotate(-180deg)' : 'rotate(0)',
-            transition: '0.2s'
+            transition: '0.2s',
+            color: 'white'
           }}
         />
       </ListItemButton>

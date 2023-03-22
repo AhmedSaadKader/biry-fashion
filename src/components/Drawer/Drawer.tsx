@@ -79,6 +79,7 @@ export default function ResponsiveDrawer({ mobileOpen, handleDrawerToggle, windo
           {drawer}
         </Drawer>
         <Drawer
+          PaperProps={{ sx: { backgroundColor: 'rgb(5, 30, 52)' } }}
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
