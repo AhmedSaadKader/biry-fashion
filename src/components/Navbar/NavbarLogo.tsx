@@ -13,7 +13,10 @@ interface NavBarLogoProps {
 const NavbarLogo = ({ width = '4em', mr = 2, xs, md }: NavBarLogoProps) => {
   return (
     <Box sx={{ mr: mr, display: { xs: xs, md: md }, alignItems: 'center' }}>
-      <Box sx={{ width: width, display: 'flex', alignItems: 'center' }} component="a" href="/">
+      <Box
+        sx={{ width: width, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        component="a"
+        href="/">
         {/* <SvgIcon component={Logo} /> */}
         <img src={LogoWithoutName} style={{ width: '65px' }} />
       </Box>
