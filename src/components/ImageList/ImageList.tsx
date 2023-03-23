@@ -8,12 +8,12 @@ import { itemData } from './itemData';
 
 export default function TitlebarImageList() {
   return (
-    <ImageList sx={{ width: '80%', height: 550, margin: 'auto' }}>
+    <ImageList sx={{ width: '80%', height: 550, margin: 'auto', backgroundColor: '#e9e9eb' }}>
       {/* <ImageListItem key="Subheader" cols={2}>
         <ListSubheader component="div">December</ListSubheader>
       </ImageListItem> */}
       {itemData.map((item) => (
-        <ImageListItem key={item.img}>
+        <ImageListItem key={item.img} sx={{ margin: '10px' }}>
           <img
             src={`${item.img}?w=248&fit=crop&auto=format`}
             srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
