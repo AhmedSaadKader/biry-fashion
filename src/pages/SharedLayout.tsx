@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar/Navbar';
 
 const SharedLayout = () => {
   return (
-    <Box sx={{ backgroundColor: '#f7e1fc' }}>
+    <Box sx={{ backgroundColor: '#e9e9eb' }}>
       <Navbar />
       <Outlet />
       <Footer />
