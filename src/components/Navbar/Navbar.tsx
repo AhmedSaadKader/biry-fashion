@@ -50,7 +50,17 @@ const Navbar = () => {
             alignContent: 'center',
             justifyContent: 'space-between'
           }}>
-          <Box sx={{ flexGrow: 0, display: { xs: 'none', sm: 'flex' } }}>
+          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2 }}>
+              <MenuIcon />
+            </IconButton>
+          </Box>
+          <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -80,16 +90,6 @@ const Navbar = () => {
               }}>
               Biry Fashion
             </Typography>
-          </Box>
-          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: 'none' } }}>
-              <MenuIcon />
-            </IconButton>
           </Box>
           <NoDisplayIfSearchOpen
             openSearch={openSearch}
