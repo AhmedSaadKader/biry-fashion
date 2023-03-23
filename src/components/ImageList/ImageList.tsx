@@ -8,7 +8,7 @@ import { itemData } from './itemData';
 
 export default function TitlebarImageList() {
   return (
-    <ImageList sx={{ width: 500, height: 450 }}>
+    <ImageList>
       {/* <ImageListItem key="Subheader" cols={2}>
         <ListSubheader component="div">December</ListSubheader>
       </ImageListItem> */}
