@@ -64,7 +64,7 @@ const DrawerNestedList = ({ index, text, data }: DrawerNestedList) => {
         data.map((item) => (
           <ListItemButton
             key={item?.label}
-            sx={{ py: 0, minHeight: 32, color: 'rgba(255,255,255,.8)' }}>
+            sx={{ py: 0, minHeight: 32, color: 'rgba(12, 12, 12, 0.8)' }}>
             <ListItemIcon sx={{ color: 'white' }}>{item.icon}</ListItemIcon>
             <ListItemText
               primary={item.label}
