@@ -23,7 +23,8 @@ const DrawerNestedList = ({ index, text, data }: DrawerNestedList) => {
       sx={{
         bgcolor: open ? '#fceaf5' : null,
         pb: open ? 2 : 0
-      }}>
+      }}
+    >
       <ListItemButton
         alignItems="flex-start"
         onClick={() => setOpen(!open)}
@@ -31,7 +32,8 @@ const DrawerNestedList = ({ index, text, data }: DrawerNestedList) => {
           px: 3,
           pt: 2.5,
           pb: open ? 0 : 2.5
-        }}>
+        }}
+      >
         <ListItemText
           primary={text}
           primaryTypographyProps={{

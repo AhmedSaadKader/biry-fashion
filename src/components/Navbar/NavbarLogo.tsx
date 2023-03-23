@@ -16,7 +16,8 @@ const NavbarLogo = ({ width = '4em', mr = 2, xs, md }: NavBarLogoProps) => {
       <Box
         sx={{ width: width, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
         component="a"
-        href="/">
+        href="/"
+      >
         {/* <SvgIcon component={Logo} /> */}
         <img src={LogoWithoutName} style={{ width: '65px' }} />
       </Box>

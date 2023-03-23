@@ -60,7 +60,8 @@ export default function ResponsiveDrawer({ mobileOpen, handleDrawerToggle, windo
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders">
+        aria-label="mailbox folders"
+      >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           PaperProps={{ sx: { backgroundColor: '#fceaf5' } }}
@@ -75,7 +76,8 @@ export default function ResponsiveDrawer({ mobileOpen, handleDrawerToggle, windo
             display: { xs: 'block' },
             zIndex: '1075',
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
-          }}>
+          }}
+        >
           {drawer}
         </Drawer>
         {/* <Drawer
