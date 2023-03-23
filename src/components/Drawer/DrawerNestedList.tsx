@@ -21,7 +21,7 @@ const DrawerNestedList = ({ index, text, data }: DrawerNestedList) => {
     <Box
       key={index}
       sx={{
-        bgcolor: open ? 'rgba(71, 98, 130, 0.2)' : null,
+        bgcolor: open ? '#fceaf5' : null,
         pb: open ? 2 : 0
       }}>
       <ListItemButton
@@ -39,14 +39,14 @@ const DrawerNestedList = ({ index, text, data }: DrawerNestedList) => {
             fontWeight: 'medium',
             lineHeight: '20px',
             mb: '2px',
-            color: 'white'
+            color: 'black'
           }}
           secondary="Authentication, Firestore Database, Realtime Database, Storage, Hosting, Functions, and Machine Learning"
           secondaryTypographyProps={{
             noWrap: true,
             fontSize: 12,
             lineHeight: '16px',
-            color: open ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.5)'
+            color: 'black'
           }}
           sx={{ my: 0 }}
         />
@@ -56,16 +56,14 @@ const DrawerNestedList = ({ index, text, data }: DrawerNestedList) => {
             // opacity: 1,
             transform: open ? 'rotate(-180deg)' : 'rotate(0)',
             transition: '0.2s',
-            color: 'white'
+            color: 'black'
           }}
         />
       </ListItemButton>
       {open &&
         data.map((item) => (
-          <ListItemButton
-            key={item?.label}
-            sx={{ py: 0, minHeight: 32, color: 'rgba(255,255,255,.8)' }}>
-            <ListItemIcon sx={{ color: 'white' }}>{item.icon}</ListItemIcon>
+          <ListItemButton key={item?.label} sx={{ py: 0, minHeight: 32, color: 'black' }}>
+            <ListItemIcon sx={{ color: 'black' }}>{item.icon}</ListItemIcon>
             <ListItemText
               primary={item.label}
               primaryTypographyProps={{ fontSize: 14, fontWeight: 'medium' }}

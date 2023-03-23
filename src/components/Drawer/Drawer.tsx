@@ -42,10 +42,10 @@ export default function ResponsiveDrawer({ mobileOpen, handleDrawerToggle, windo
         {pages.map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon sx={{ color: 'white' }}>
+              <ListItemIcon sx={{ color: 'black' }}>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} sx={{ color: 'white' }} />
+              <ListItemText primary={text} sx={{ color: 'black' }} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -63,7 +63,7 @@ export default function ResponsiveDrawer({ mobileOpen, handleDrawerToggle, windo
         aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
-          PaperProps={{ sx: { backgroundColor: 'rgb(5, 30, 52)' } }}
+          PaperProps={{ sx: { backgroundColor: '#fceaf5' } }}
           container={container}
           variant="temporary"
           open={mobileOpen}
@@ -72,14 +72,14 @@ export default function ResponsiveDrawer({ mobileOpen, handleDrawerToggle, windo
             keepMounted: true // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { xs: 'block' },
             zIndex: '1075',
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
           }}>
           {drawer}
         </Drawer>
-        <Drawer
-          PaperProps={{ sx: { backgroundColor: 'rgb(5, 30, 52)' } }}
+        {/* <Drawer
+          PaperProps={{ sx: { backgroundColor: '#fceaf5' } }}
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
@@ -88,7 +88,7 @@ export default function ResponsiveDrawer({ mobileOpen, handleDrawerToggle, windo
           }}
           open>
           {drawer}
-        </Drawer>
+        </Drawer> */}
       </Box>
     </Box>
   );

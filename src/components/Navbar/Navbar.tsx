@@ -41,9 +41,8 @@ const Navbar = () => {
   };
 
   return (
-    // <Box position="sticky" sx={{ backgroundColor: '#201b21', zIndex: 1300 }}>
-    <AppBar position="sticky">
-      <Container maxWidth="xl" sx={{ backgroundColor: '#201b21', zIndex: 1300 }}>
+    <AppBar position="sticky" sx={{ color: 'black' }}>
+      <Container maxWidth="xl" sx={{ backgroundColor: '#ebdfed', zIndex: 1300 }}>
         <Toolbar
           sx={{
             paddingLeft: 0,
@@ -51,6 +50,16 @@ const Navbar = () => {
             alignContent: 'center',
             justifyContent: 'space-between'
           }}>
+          <Box sx={{ flexGrow: 0, display: { xs: 'none', sm: 'flex' } }}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2 }}>
+              <MenuIcon />
+            </IconButton>
+          </Box>
           <NavbarLogo width="8em" xs={'none'} md={'flex'} />
           <Typography
             variant="h6"
@@ -133,7 +142,6 @@ const Navbar = () => {
       </Container>
       <ResponsiveDrawer mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
     </AppBar>
-    // </Box>
   );
 };
 
