@@ -42,7 +42,7 @@ const Navbar = () => {
 
   return (
     <AppBar position="sticky" sx={{ color: 'black' }}>
-      <Container maxWidth="xl" sx={{ backgroundColor: '#ebdfed', zIndex: 1300 }}>
+      <Container maxWidth="xl" sx={{ backgroundColor: '#ece8ed', zIndex: 1300 }}>
         <Toolbar
           sx={{
             paddingLeft: 0,
