@@ -1,8 +1,8 @@
-import image1 from '../../assets/imagelist/image1-resize.jpeg';
-import image2 from '../../assets/imagelist/image2-resize.jpeg';
-import image3 from '../../assets/imagelist/image3-resize.jpeg';
-import image4 from '../../assets/imagelist/image4-resize.jpeg';
-import image5 from '../../assets/imagelist/image5-resize.jpeg';
+import image1 from '../../assets/imagelist/image1-resize.jpg';
+import image2 from '../../assets/imagelist/image2-resize.jpg';
+import image3 from '../../assets/imagelist/image3-resize.jpg';
+import image4 from '../../assets/imagelist/image4-resize.jpg';
+import image5 from '../../assets/imagelist/image5-resize.jpg';
 
 export const itemData = [
   {
