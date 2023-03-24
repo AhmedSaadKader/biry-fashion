@@ -21,6 +21,7 @@ export default function TitlebarImageList() {
             loading="lazy"
           />
           <ImageListItemBar
+            sx={{ marginBottom: '55%' }}
             title={item.title}
             subtitle={item.author}
             actionIcon={
