@@ -9,19 +9,21 @@ export const itemData = [
     img: image1,
     title: 'Breakfast',
     author: '@bkristastucchio',
-    rows: 3,
+    rows: 2,
     cols: 2,
     featured: true
   },
   {
     img: image2,
     title: 'Burger',
-    author: '@rollelflex_graphy726'
+    author: '@rollelflex_graphy726',
+    cols: 2
   },
   {
     img: image3,
     title: 'Camera',
-    author: '@helloimnik'
+    author: '@helloimnik',
+    cols: 2
   },
   {
     img: image4,

@@ -5,10 +5,12 @@ import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import { itemData } from './itemData';
+import { Masonry } from '@mui/lab';
 
 export default function TitlebarImageList() {
   return (
-    <ImageList sx={{ width: '80%', height: 550, margin: 'auto', backgroundColor: '#f7e1fc' }}>
+    // <Masonry sx={{ width: '80%', height: 550, margin: 'auto', backgroundColor: '#f7e1fc' }}>
+    <Masonry columns={{ xs: 1, sm: 2, md: 3 }} sx={{ margin: 'auto' }}>
       {/* <ImageListItem key="Subheader" cols={2}>
         <ListSubheader component="div">December</ListSubheader>
       </ImageListItem> */}
@@ -21,7 +23,6 @@ export default function TitlebarImageList() {
             loading="lazy"
           />
           <ImageListItemBar
-            sx={{ marginBottom: '55%' }}
             title={item.title}
             subtitle={item.author}
             actionIcon={
@@ -34,6 +35,6 @@ export default function TitlebarImageList() {
           />
         </ImageListItem>
       ))}
-    </ImageList>
+    </Masonry>
   );
 }
